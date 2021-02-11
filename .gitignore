@@ -3,3 +3,5 @@
 ################################################################################
 
 /DataObjects/DataObjects/bin/Debug/net5.0
+/DataObjects/DataObjects/obj
+/DataObjects/.vs/DataObjects/v16
