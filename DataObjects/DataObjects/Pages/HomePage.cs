@@ -13,7 +13,7 @@ namespace DataObjects.Pages
 
         #endregion
 
-        public string GetLoggedInUserEmail() => _loggedInUserEmail.GetText();
+        public bool IsUserLoggedIn(string email) => _loggedInUserEmail.GetText() == email;
 
         public void GoToMenu(string menu)
         {

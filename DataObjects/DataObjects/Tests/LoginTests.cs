@@ -24,7 +24,7 @@ namespace DataObjects.Tests
         public void UserCanLoginTest()
         {
             Pages.LoginPage.Login(_user);
-            Pages.HomePage.GetLoggedInUserEmail().Should().Be(_user.Email);
+            Pages.HomePage.IsUserLoggedIn(_user.Email).Should().BeTrue();
         }
 
         [TestMethod]
