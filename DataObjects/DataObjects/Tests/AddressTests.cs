@@ -16,7 +16,7 @@ namespace DataObjects.Tests
         {
             base.Before();
             var client = NsTestFrameworkApi.RestSharp.RequestHelper.GetRestClient(Constants.AddressBookUrl);
-            var x = client.CreateRequest(ApiResource.User, _user);
+            client.CreateRequest(ApiResource.User, _user);
         }
 
         [TestMethod]

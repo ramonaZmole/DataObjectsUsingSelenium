@@ -10,6 +10,7 @@ namespace DataObjects.Tests
     public class LoginTests : BaseTest
     {
         private readonly UserEntity _user = new UserEntity();
+        private const string ErrorMessage = "Bad email or password.";
 
         [TestInitialize]
         public override void Before()
@@ -27,12 +28,32 @@ namespace DataObjects.Tests
         }
 
         [TestMethod]
-        public void CheckErrorMessageTest()
+        public void CheckErrorMessageWheUserDoesNotExistTest()
         {
             var user = new UserEntity();
             Pages.LoginPage.Login(user);
 
-            Pages.LoginPage.GetErrorMessage().Should().Be("Bad email or password.");
+            Pages.LoginPage.GetErrorMessage().Should().Be(ErrorMessage);
+        }
+
+        [TestMethod]
+        public void CheckErrorMessageWhenPasswordIsEmptyTest()
+        {
+            var user = new UserEntity { Password = "" };
+
+            Pages.LoginPage.Login(user);
+
+            Pages.LoginPage.GetErrorMessage().Should().Be(ErrorMessage);
+        }
+
+        [TestMethod]
+        public void CheckErrorMessageWhenEmailIsEmptyTest()
+        {
+            var user = new UserEntity { Email = "" };
+
+            Pages.LoginPage.Login(user);
+
+            Pages.LoginPage.GetErrorMessage().Should().Be(ErrorMessage);
         }
     }
 }
